@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { RegistryModule } from './registry/registry.module';
+import { CrdModule } from './crd/crd.module';
 
 @Module({
-  imports: [RegistryModule],
+  imports: [CrdModule],
   controllers: [],
   providers: [],
 })
-export class AppModule {}
+export class AppModule { }

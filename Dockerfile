@@ -21,11 +21,8 @@ RUN npm install --omit=dev --production
 
 # Copy built artifact and necessary runtime files
 COPY --from=builder /app/dist ./dist
-# The service reads src/registry/db.json at runtime (process.cwd()/src/registry/db.json)
-# so include the db.json from the source into the image
-COPY --from=builder /app/src/registry/db.json ./src/registry/db.json
 
-EXPOSE 3000
+EXPOSE 3001
 
 # Run the compiled app
 CMD ["node", "dist/main"]

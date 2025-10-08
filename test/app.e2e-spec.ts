@@ -15,12 +15,15 @@ describe('AppController (e2e)', () => {
     await app.init();
   });
 
-  it('/ (GET)', async () => {
-    // app.getHttpServer() has an any-ish type from Nest; safe to disable for this test
+  it('/crd (POST) should return a CDS Hooks info card', async () => {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-    await request(app.getHttpServer())
-      .get('/')
-      .expect(200)
-      .expect('Hello World!');
+    const res = await request(app.getHttpServer())
+      .post('/crd')
+      .send({})
+      .expect(201);
+
+    expect(res.body).toBeDefined();
+    expect(Array.isArray(res.body.cards)).toBe(true);
+    expect(res.body.cards[0].summary).toMatch(/Prior Authorization/i);
   });
 });

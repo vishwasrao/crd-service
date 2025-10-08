@@ -31,6 +31,14 @@
 $ npm install
 ```
 
+This service name was changed from `registry-service` to `crd-service` and exposes a simple OST endpoint.
+
+Default runtime port: 3001
+
+Endpoint:
+
+- POST /crd  -> returns a CDS Hooks-style info card indicating prior authorization is not needed for the CPT code.
+
 ## Compile and run the project
 
 ```bash
